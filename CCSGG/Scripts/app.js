@@ -683,7 +683,7 @@
 
         window.addEventListener('load', () => {
             initWebSocket();
-            appendLog("CCS GG v0.1.4 gestartet. Yeah!");
+            appendLog("CCS GG v0.1.4 gestartet.");
         });
 
         window.addEventListener('pagehide', saveChartToLocalStorage);
