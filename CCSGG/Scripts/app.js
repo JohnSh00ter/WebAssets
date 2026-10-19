@@ -683,7 +683,7 @@ function formatValue(paramName, val) {
 
 window.addEventListener('load', () => {
     initWebSocket();
-    appendLog("CCS GG v0.1.4 gestartet.");
+    appendLog("CCS GG v0.1.4 gestartet. CacheTest...");
 });
 
 window.addEventListener('pagehide', saveChartToLocalStorage);
