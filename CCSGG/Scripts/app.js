@@ -679,11 +679,11 @@ function formatValue(paramName, val) {
         }
     }
     return val; // Für reine Integers (Zähler, Delays etc.)
-}        
+}
 
 window.addEventListener('load', () => {
     initWebSocket();
-    appendLog("CCS GG v0.1.4 gestartet. CacheTest...");
+    appendLog("CCS GG v0.1.4 gestartet.");
 });
 
 window.addEventListener('pagehide', saveChartToLocalStorage);
