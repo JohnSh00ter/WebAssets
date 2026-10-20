@@ -686,32 +686,33 @@ window.addEventListener('load', () => {
     appendLog("CCS GG v0.1.4 gestartet.");
 });
 
-window.addEventListener('pagehide', saveChartToLocalStorage);
-window.addEventListener('beforeunload', saveChartToLocalStorage);               
+window.addEventListener('pagehide', () => {
+    saveChartToLocalStorage();
+    cleanupWebSocket(); // Hartes Trennen beim Verlassen/Refresh (verhindert Geister-Clients)
+});
 
-// --- PAGE VISIBILITY API (Verhindert Fehlalarme im Hintergrund-Tab) ---
+window.addEventListener('beforeunload', () => {
+    saveChartToLocalStorage();
+    cleanupWebSocket(); // Hartes Trennen beim Schließen des Tabs
+});                
+
+// --- PAGE VISIBILITY & LIFECYCLE API ---
 document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
-        if (watchdogTimer) { clearTimeout(watchdogTimer); watchdogTimer = null; }
-        if (pingIntervalTimer) { clearInterval(pingIntervalTimer); pingIntervalTimer = null; }
-        console.log("[WS] Tab im Hintergrund - Timer pausiert, um Drosselungs-Fehlalarme zu vermeiden.");
+        // Tab nicht sichtbar / im Hintergrund: Sofort hart trennen und Timer stoppen
+        cleanupWebSocket();
+        console.log("[WS] Tab im Hintergrund - WebSocket sofort getrennt und Timer pausiert.");
         saveChartToLocalStorage();
     } else {
-        console.log("[WS] Tab wieder aktiv. Prüfe WebSocket-Status...");
-        if (websocket && websocket.readyState === WebSocket.OPEN) {
-            // Verbindung steht noch -> Watchdog und Ping sicher neu starten
-            resetWatchdog();
-            if (!pingIntervalTimer) {
-                pingIntervalTimer = setInterval(() => {
-                    sendCmd({ action: "ping" });
-                }, 2000); // Etwas entspannter (2s) im Betrieb
-            }
-        } else {
-            // Verbindung ist in der Zwischenzeit abgerissen -> Sofort Reconnect einleiten
-            if (!isReconnecting) {
-                cleanupWebSocket();
-                initWebSocket();
-            }
-        }
+        console.log("[WS] Tab wieder aktiv. Baue WebSocket sofort frisch auf...");
+        
+        // Eventuelle alte Reconnect-Wartezeiten verwerfen
+        if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
+        if (countdownTimer) { clearInterval(countdownTimer); countdownTimer = null; }
+        isReconnecting = false;
+        
+        // Sofort ohne Verzögerung neu verbinden
+        cleanupWebSocket();
+        initWebSocket();
     }
 });
