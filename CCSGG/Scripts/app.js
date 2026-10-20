@@ -694,23 +694,19 @@ window.addEventListener('pagehide', () => {
 window.addEventListener('beforeunload', () => {
     saveChartToLocalStorage();
     cleanupWebSocket(); // Hartes Trennen beim Schließen des Tabs
-});                
+});      
 
-// --- PAGE VISIBILITY & LIFECYCLE API ---
+// PAGE VISIBILITY & LIFECYCLE API
 document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        // Tab nicht sichtbar / im Hintergrund: Sofort hart trennen und Timer stoppen
+    if (document.hidden) { // Tab nicht sichtbar / im Hintergrund: Sofort hart trennen und Timer stoppen
         cleanupWebSocket();
-        console.log("[WS] Tab im Hintergrund - WebSocket sofort getrennt und Timer pausiert.");
+        appendLog("Inaktiver Tab: WebSocket Verbindung getrennt!");
         saveChartToLocalStorage();
     } else {
-        console.log("[WS] Tab wieder aktiv. Baue WebSocket sofort frisch auf...");
-        
         // Eventuelle alte Reconnect-Wartezeiten verwerfen
         if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
         if (countdownTimer) { clearInterval(countdownTimer); countdownTimer = null; }
         isReconnecting = false;
-        
         // Sofort ohne Verzögerung neu verbinden
         cleanupWebSocket();
         initWebSocket();
