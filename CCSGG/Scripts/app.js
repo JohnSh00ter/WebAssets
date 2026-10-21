@@ -596,6 +596,7 @@ function initWebSocket() {
 
             if (data.type === "plot") {
                 // Paket hinten an die Warteschlange anhängen
+                console.log("Plot empfangen:", data);
                 plotQueue.push(data); 
                 lastPlotPacketTime = performance.now();
                 // Wenn der Ticker noch nicht läuft UND wir genug Puffer haben -> Starten!
@@ -664,7 +665,6 @@ function startPlotTicker() {
             liveChart.data.labels.shift();
             for(let i = 0; i < ds.length; i++) ds[i].data.shift();
         }
-
         liveChart.update('none');
     }, RENDER_INTERVAL_MS);
 }
