@@ -229,7 +229,7 @@ window.addEventListener('resize', function() {
         liveChart.options.plugins.zoom.pan.enabled = shouldDisplay;
         liveChart.options.plugins.zoom.zoom.pinch = shouldDisplay;
     }
-    setTimeout(logScrollToBottom, 100);
+    setTimeout(logScrollToBottom, 200);
 });
 
 function resetGraphZoom() {
@@ -359,8 +359,8 @@ function changeParam(paramName, delta) {
 }
 
 function toggleControl() {
-    resetGraphZoom();
-    logScrollToBottom();
+    setTimeout(logScrollToBottom, 200);
+    setTimeout(resetGraphZoom, 200);
     sendCmd({ action: "toggle" });
 }
 
