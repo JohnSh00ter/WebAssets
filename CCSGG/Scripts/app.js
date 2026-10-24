@@ -197,11 +197,15 @@ const liveChart = new Chart(ctx, {
     }
 });
 
+function logScrollToBottom() {
+    setPauseState(false); 
+    logBox.scrollTop = logBox.scrollHeight;
+}
+
 function setStableViewportHeight() { // Berechnet die initiale Höhe einmalig beim Aufruf
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-    setPauseState(false); 
-    logBox.scrollTop = logBox.scrollHeight;
+    //logScrollToBottom();
 }
 
 setStableViewportHeight(); // Sofort beim ersten Rendern setzen
@@ -225,6 +229,7 @@ window.addEventListener('resize', function() {
         liveChart.options.plugins.zoom.pan.enabled = shouldDisplay;
         liveChart.options.plugins.zoom.zoom.pinch = shouldDisplay;
     }
+    setTimeout(logScrollToBottom, 100);
 });
 
 function resetGraphZoom() {
@@ -354,6 +359,8 @@ function changeParam(paramName, delta) {
 }
 
 function toggleControl() {
+    resetGraphZoom();
+    logScrollToBottom();
     sendCmd({ action: "toggle" });
 }
 
@@ -653,16 +660,16 @@ function startPlotTicker() {
             const d = ds[datasetIndex].data;
             return d.length > 0 ? d[d.length - 1] : 0;
         };
-        ds[0].data.push(getVal(data.cl, 0));       
-        ds[1].data.push(getVal(data.cr, 1));       
-        ds[2].data.push(getVal(data.pl, 2));       
-        ds[3].data.push(getVal(data.pr, 3));       
-        ds[4].data.push(getVal(data.limL, 4));     
-        ds[5].data.push(getVal(data.limR, 5));     
-        ds[6].data.push(getVal(data.platL, 6));    
-        ds[7].data.push(getVal(data.platR, 7));    
-        ds[8].data.push(getVal(data.maxPlatL, 8)); 
-        ds[9].data.push(getVal(data.maxPlatR, 9)); 
+        ds[0].data.push(getVal(data.cl, 0));
+        ds[1].data.push(getVal(data.cr, 1));
+        ds[2].data.push(getVal(data.pl, 2));
+        ds[3].data.push(getVal(data.pr, 3));
+        ds[4].data.push(getVal(data.limL, 4));
+        ds[5].data.push(getVal(data.limR, 5));
+        ds[6].data.push(getVal(data.platL, 6));
+        ds[7].data.push(getVal(data.platR, 7));
+        ds[8].data.push(getVal(data.maxPlatL, 8));
+        ds[9].data.push(getVal(data.maxPlatR, 9));
         if (liveChart.data.labels.length > maxDataPoints) {
             liveChart.data.labels.shift();
             for(let i = 0; i < ds.length; i++) ds[i].data.shift();
