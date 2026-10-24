@@ -508,8 +508,8 @@ function initWebSocket() {
             let cachedDoorState = { cstate: "", lstate: "" };
 
             if (data.type === "badges") {
-                if (data.csl !== undefined) document.getElementById('v-cl').innerText = data.csl.toFixed(1).replace('.', ',') + ' A';
-                if (data.csr !== undefined) document.getElementById('v-cr').innerText = data.csr.toFixed(1).replace('.', ',') + ' A';
+                if (data.csl !== undefined) document.getElementById('v-cl').innerText = data.csl.toFixed(2).replace('.', ',') + ' A';
+                if (data.csr !== undefined) document.getElementById('v-cr').innerText = data.csr.toFixed(2).replace('.', ',') + ' A';
                 if (data.psl !== undefined) document.getElementById('v-pl').innerText = data.psl;
                 if (data.psr !== undefined) document.getElementById('v-pr').innerText = data.psr;
 
@@ -570,6 +570,8 @@ function initWebSocket() {
                             case "Wird geöffnet...":
                             case "Wird geschlossen...":
                             case "Öffne Verriegelung...":
+                            case "Öffne Verriegelung (Tor wird geöffnet)...":
+                            case "Öffne Verriegelung (Tor wird geschlossen)...":
                             case "Fehler-Recovery: Fahre zurück...":
                                 stateColor = "color: #00b0ff; font-weight: bold;"; // Blau (In Bewegung)
                                 break;
@@ -608,8 +610,8 @@ function initWebSocket() {
                 latestPlotData = data; 
                 lastPlotPacketTime = performance.now();
                 //console.log("ESP32 Plot empfangen:", latestPlotData); 
-                if (data.cl !== undefined) document.getElementById('v-cl').innerText = data.cl.toFixed(1).replace('.', ',') + ' A';
-                if (data.cr !== undefined) document.getElementById('v-cr').innerText = data.cr.toFixed(1).replace('.', ',') + ' A';
+                if (data.cl !== undefined) document.getElementById('v-cl').innerText = data.cl.toFixed(2).replace('.', ',') + ' A';
+                if (data.cr !== undefined) document.getElementById('v-cr').innerText = data.cr.toFixed(2).replace('.', ',') + ' A';
                 if (data.pl !== undefined) document.getElementById('v-pl').innerText = data.pl;
                 if (data.pr !== undefined) document.getElementById('v-pr').innerText = data.pr;                        
             }      
@@ -683,7 +685,7 @@ function formatValue(paramName, val) {
 
 window.addEventListener('load', () => {
     initWebSocket();
-    appendLog("CCS GG v0.1.6 gestartet.");
+    appendLog("CCS GG v0.1.7 gestartet.");
 });
 
 window.addEventListener('pagehide', () => {

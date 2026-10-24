@@ -252,6 +252,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 6px;
+    touch-action: manipulation; /* Verhindert das Zoomen am Handy */
 }
 .btn:hover { background-color: #3e3e3e; border-color: #666; }
 .btn-active { background-color: #e65100; border-color: #ff9800; }
@@ -265,6 +266,7 @@ body {
     border: none; border-radius: 6px; font-weight: bold; cursor: pointer;
     font-family: 'JetBrains Mono', monospace;
     transition: opacity 0.2s;
+    touch-action: manipulation; /* Verhindert das Zoomen am Handy */
 }
 .btn-toggle:hover { opacity: 0.9; }
 .number-picker {
@@ -276,6 +278,7 @@ body {
     width: 38px; height: 38px; font-size: 1.1rem; cursor: pointer;
     font-family: 'JetBrains Mono', monospace;
     transition: background-color 0.2s;
+    touch-action: manipulation; /* Verhindert das Zoomen am Handy */
 }
 .picker-btn:hover { background-color: #444; }
 .picker-val { font-size: 0.95rem; font-weight: bold; color: #fff; }
