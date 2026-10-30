@@ -194,7 +194,7 @@ body {
     padding-right: 4px; 
     display: flex; 
     flex-direction: column; 
-    gap: 10px; 
+    gap: 8px; 
     min-height: 0;            
 }
 .log-box::-webkit-scrollbar, .config-container::-webkit-scrollbar { width: 6px; }
@@ -286,7 +286,7 @@ body {
     background-color: #1f1f1f;
     border: 1px solid #333;
     border-radius: 8px;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
 }
 .config-section summary {
     padding: 12px;
