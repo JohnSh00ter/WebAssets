@@ -192,7 +192,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 4px;
-    padding-bottom: 12px;
+    /* padding-bottom: 12px; */
     display: flex;
     flex-direction: column;
     gap: 8px;
