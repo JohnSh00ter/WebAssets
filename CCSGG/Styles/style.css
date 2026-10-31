@@ -192,12 +192,10 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 4px;
-    /* padding-bottom: 12px; */
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    min-height: 0;
-    overscroll-behavior: contain;
+    gap: 10px;
+    min-height: 0;     
 }
 .log-box::-webkit-scrollbar, .config-container::-webkit-scrollbar { width: 6px; }
 .log-box::-webkit-scrollbar-track, .config-container::-webkit-scrollbar-track { background: #141414; }
@@ -314,7 +312,7 @@ body {
     padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     background-color: #181818;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
