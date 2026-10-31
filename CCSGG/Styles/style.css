@@ -274,6 +274,7 @@ body {
     padding-right: 4px;
     display: flex;
     flex-direction: column;
+    gap: 4px;
     /* gap: 10px; */ /* ORG */
     min-height: 0;
 }
@@ -287,7 +288,8 @@ body {
     background-color: #1f1f1f;
     border: 1px solid #333;
     border-radius: 8px;
-    margin-bottom: 8px; /* ORG */
+    margin-bottom: 4px; /* ORG */
+    /* margin-bottom: 8px; */ /* ORG */
 }
 .config-section summary {
     padding: 12px;
@@ -313,7 +315,8 @@ body {
     padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px; /* ORG */
+    gap: 8px;
+    /* gap: 10px; */ /* ORG */
     background-color: #181818;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
