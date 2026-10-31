@@ -277,10 +277,9 @@ body {
     gap: 8px;
     /* gap: 10px; */ /* ORG */
     min-height: 0;
-    /* --- DIE LÖSUNG FÜR BÜNDIGKEIT OHNE WOBBLE --- */
+    /* --- DIE LÖSUNG FÜR BÜNDIGKEIT OHNE WOBBLE (GPU-Berechnung für Subpixel-Genauigkeit) --- */
     transform: translateZ(0);
     will-change: transform;
-    /* overscroll-behavior-y: contain; */
 }
 .config-group {
     background-color: #252525; border-radius: 8px; padding: 12px;
@@ -296,7 +295,7 @@ body {
     /* margin-bottom: 8px; */ /* ORG */
 }
 .config-section summary {
-    padding: 8px; /* 12px */
+    padding: 12px; /* 12px */
     font-size: 0.85rem;
     font-weight: bold;
     color: #03dac6;
