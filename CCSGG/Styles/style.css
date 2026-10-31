@@ -274,21 +274,21 @@ body {
     padding-right: 4px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
     /* gap: 10px; */ /* ORG */
     min-height: 0;
 }
 .config-group {
     background-color: #252525; border-radius: 8px; padding: 12px;
     border: 1px solid #333; flex: 0 0 auto;
-
+    gap: 8px; /* new */
 }
 .config-label { font-size: 0.8rem; color: #ccc; margin-bottom: 8px; display: block; text-align: center; }
 .config-section {
     background-color: #1f1f1f;
     border: 1px solid #333;
     border-radius: 8px;
-    margin-bottom: 4px; /* ORG */
+    /* margin-bottom: 4px; */ /* ORG */
     /* margin-bottom: 8px; */ /* ORG */
 }
 .config-section summary {
