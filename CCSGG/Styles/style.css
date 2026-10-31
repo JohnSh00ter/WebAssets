@@ -184,19 +184,9 @@ body {
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
-    user-select: text;                
+    user-select: text;
 }
 .log-controls { display: flex; gap: 8px; flex: 0 0 auto; }
-.config-container {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-height: 0;     
-}
 .log-box::-webkit-scrollbar, .config-container::-webkit-scrollbar { width: 6px; }
 .log-box::-webkit-scrollbar-track, .config-container::-webkit-scrollbar-track { background: #141414; }
 .log-box::-webkit-scrollbar-thumb, .config-container::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
@@ -256,11 +246,6 @@ body {
 }
 .btn:hover { background-color: #3e3e3e; border-color: #666; }
 .btn-active { background-color: #e65100; border-color: #ff9800; }
-.config-group {
-    background-color: #252525; border-radius: 8px; padding: 12px;
-    border: 1px solid #333; flex: 0 0 auto;
-}
-.config-label { font-size: 0.8rem; color: #ccc; margin-bottom: 8px; display: block; text-align: center; }
 .btn-toggle {
     width: 100%; padding: 10px; background-color: #03dac6; color: #000;
     border: none; border-radius: 6px; font-weight: bold; cursor: pointer;
@@ -282,11 +267,27 @@ body {
 }
 .picker-btn:hover { background-color: #444; }
 .picker-val { font-size: 0.95rem; font-weight: bold; color: #fff; }
+.config-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 4px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */ /* ORG */
+    min-height: 0;
+}
+.config-group {
+    background-color: #252525; border-radius: 8px; padding: 12px;
+    border: 1px solid #333; flex: 0 0 auto;
+
+}
+.config-label { font-size: 0.8rem; color: #ccc; margin-bottom: 8px; display: block; text-align: center; }
 .config-section {
     background-color: #1f1f1f;
     border: 1px solid #333;
     border-radius: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 8px; /* ORG */
 }
 .config-section summary {
     padding: 12px;
@@ -312,11 +313,11 @@ body {
     padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px; /* ORG */
     background-color: #181818;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-}    
+}
 canvas {
     transform: translateZ(0);
     will-change: transform;
