@@ -280,7 +280,7 @@ body {
     /* --- DIE LÖSUNG FÜR BÜNDIGKEIT OHNE WOBBLE --- */
     transform: translateZ(0);
     will-change: transform;
-    overscroll-behavior-y: contain;    
+    /* overscroll-behavior-y: contain; */
 }
 .config-group {
     background-color: #252525; border-radius: 8px; padding: 12px;
